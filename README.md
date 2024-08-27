@@ -1,2 +1,2 @@
 # note-app-fe
-Applicazione Realizzata con progetto Angular v.17 (Standalone)
+Applicazione gestione Note Realizzata con Angular v.17 (Standalone)

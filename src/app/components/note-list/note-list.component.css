@@ -13,6 +13,8 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Ombra leggera */
   box-sizing: border-box; /* Assicura che padding e border siano inclusi nella larghezza totale */
   cursor: pointer;
+  text-overflow: ellipsis;
+  height: 120px ;
 }
 
 .note-code {
@@ -23,4 +25,12 @@
 
 .note-description {
   color: #333; /* Colore del testo della descrizione */
+}
+
+.truncate {
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* Numero di righe da visualizzare */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

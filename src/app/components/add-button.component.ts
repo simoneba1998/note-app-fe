@@ -4,9 +4,7 @@ import { Component } from '@angular/core';
   selector: 'app-add-button',
   standalone: true,
   imports: [],
-  template: `
-  <button class="add-button">+</button>
-  `,
+  template: ` <button class="add-button">+</button> `,
   styles: `
 .add-button {
   font-size: 24px !important; /* Dimensione del testo del pulsante */
@@ -22,8 +20,6 @@ import { Component } from '@angular/core';
   cursor: pointer; /* Cambia il cursore quando passa sopra il pulsante */
   font-family: initial !important;
 }
-  `
+  `,
 })
-export class AddButtonComponent {
-
-}
+export class AddButtonComponent {}

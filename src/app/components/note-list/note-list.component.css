@@ -1,0 +1,26 @@
+.note-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); /* Fino a 4 colonne */
+  gap: 25px; /* Spazio tra le card */
+  margin-top: 20px;
+}
+
+.note-card {
+  background-color: #d4eaff; /* Colore di sfondo per le card */
+  border: 1px solid #e0e0e0; /* Bordo grigio chiaro */
+  border-radius: 8px; /* Angoli arrotondati */
+  padding: 20px; /* Spazio interno */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Ombra leggera */
+  box-sizing: border-box; /* Assicura che padding e border siano inclusi nella larghezza totale */
+  cursor: pointer;
+}
+
+.note-code {
+  font-weight: bold;
+  color: #4d5878; /* Colore per il codice della nota */
+  margin-bottom: 10px; /* Spazio sotto il codice */
+}
+
+.note-description {
+  color: #333; /* Colore del testo della descrizione */
+}

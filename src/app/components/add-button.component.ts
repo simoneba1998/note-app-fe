@@ -10,7 +10,7 @@ import { Component } from '@angular/core';
   styles: `
 .add-button {
   font-size: 24px !important; /* Dimensione del testo del pulsante */
-  background-color: #007bff; /* Colore di sfondo del pulsante */
+  background-color: #4d5878; /* Colore di sfondo del pulsante */
   color: white; /* Colore del testo del pulsante */
   border: none;
   border-radius: 50%; /* Pulsante rotondo */

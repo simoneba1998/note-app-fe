@@ -15,7 +15,7 @@ import { Note } from '../../models/note.interface';
       <h1 class="title">MemoWiz</h1>
     </div>
     <div class="app-container">
-      <app-note-list [notes]="noteList!" ></app-note-list>
+      <app-note-list [notes]="noteList!"></app-note-list>
     </div>
   `,
   styleUrls: ['./note.component.css'],
@@ -23,9 +23,11 @@ import { Note } from '../../models/note.interface';
 export class NoteComponent implements OnInit {
   noteList?: Note[];
 
-  constructor(private noteService: NoteService) {}
+  constructor(private noteService: NoteService) {
+    this.noteService.notes$.subscribe((res) => (this.noteList = res));
+  }
 
   ngOnInit(): void {
-    this.noteService.getNotes().subscribe((res) => (this.noteList = res));
+    this.noteService.refreshNotes();
   }
 }

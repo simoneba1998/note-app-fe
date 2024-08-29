@@ -21,6 +21,8 @@
   font-weight: bold;
   color: #4d5878; /* Colore per il codice della nota */
   margin-bottom: 10px; /* Spazio sotto il codice */
+  display: flex;
+  justify-content: space-between;
 }
 
 .note-description {
@@ -33,4 +35,8 @@
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.icon-container i {
+  margin-left: 10px; /* Puoi regolare il valore per più o meno spazio */
 }

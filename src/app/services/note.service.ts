@@ -8,10 +8,22 @@ import { Note } from '../models/note.interface';
 })
 export class NoteService {
   http = inject(HttpClient);
+  noteSubject = new Subject<Note[]>();
+  notes$ = this.noteSubject.asObservable();
 
   constructor() {}
 
+  refreshNotes(){
+    this.getNotes().subscribe(
+      res => this.noteSubject.next(res)
+    );
+  }
+
   getNotes(): Observable<Note[]> {
     return this.http.get<Note[]>('http://localhost:8080/esis/to-do-list');
+  }
+
+  deleteNote(id:number): Observable<void> {
+    return this.http.delete<void>(`http://localhost:8080/esis/to-do-list/${id}`);
   }
 }

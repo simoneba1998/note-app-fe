@@ -26,4 +26,8 @@ export class NoteService {
   deleteNote(id:number): Observable<void> {
     return this.http.delete<void>(`http://localhost:8080/esis/to-do-list/${id}`);
   }
+
+  addNote(note:Note){
+    return this.http.post<Note>('http://localhost:8080/esis/to-do-list',note);
+  }
 }

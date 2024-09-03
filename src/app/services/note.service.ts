@@ -30,4 +30,12 @@ export class NoteService {
   addNote(note:Note){
     return this.http.post<Note>('http://localhost:8080/esis/to-do-list',note);
   }
+
+  getNoteById(id:number): Observable<Note> {
+    return this.http.get<Note>(`http://localhost:8080/esis/to-do-list/${id}`);
+  }
+
+  updateNote(note:Note): Observable<void> {
+    return this.http.put<void>(`http://localhost:8080/esis/to-do-list/${note.id}`,note);
+  }
 }

@@ -19,8 +19,8 @@ import { ModalType } from '../../constants';
               {{ note.code }}
             </div>
             <div class="icon-container">
-              <i class="bi bi-pencil" (click)="editNote(note.id)"></i>
-              <i class="bi bi-trash" (click)="openModalDeleteNote(note.id)"></i>
+              <i class="bi bi-pencil" (click)="editNote(note?.id)"></i>
+              <i class="bi bi-trash" (click)="openModalDeleteNote(note?.id)"></i>
             </div>
           </div>
         </div>
@@ -39,7 +39,7 @@ export class AppNoteListComponent {
 
   constructor(private modalService: ModalService) {}
 
-  openModalDeleteNote(idNote: number) {
+  openModalDeleteNote(idNote?: number) {
     this.modalData = {
       type: ModalType.DELETE_NOTE,
       value: idNote,
@@ -47,8 +47,11 @@ export class AppNoteListComponent {
     this.modalService.openModal(this.modalData.type);
   }
 
-  editNote(idNote: number) {
-    console.log('Modifica nota con ID:', idNote);
-    // Implementa la logica per la modifica della nota
+  editNote(idNote?: number) {
+    this.modalData = {
+      type: ModalType.UPDATE_NOTE,
+      value: idNote,
+    };
+    this.modalService.openModal(this.modalData.type);
   }
 }

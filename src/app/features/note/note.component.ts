@@ -1,13 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { AddButtonComponent } from '../../components/add-button.component';
-import { AppNoteListComponent } from '../../components/note-list/note-list.component';
-import { NoteService } from '../../services/note.service';
-import { Note } from '../../models/note.interface';
-import { Modal } from '../../models/modal.interface';
-import { ModalType } from '../../constants';
 import { ModalComponent } from '../../components/modal.component';
+import { AppNoteListComponent } from '../../components/note-list/note-list.component';
+import { ModalType } from '../../constants';
+import { Modal } from '../../models/modal.interface';
+import { Note } from '../../models/note.interface';
 import { ModalService } from '../../services/modal.service';
+import { NoteService } from '../../services/note.service';
 
 @Component({
   selector: 'app-note',

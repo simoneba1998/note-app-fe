@@ -14,7 +14,7 @@
   box-sizing: border-box; /* Assicura che padding e border siano inclusi nella larghezza totale */
   cursor: pointer;
   text-overflow: ellipsis;
-  height: 120px ;
+  height: 140px ;
 }
 
 .note-code {
@@ -27,6 +27,7 @@
 
 .note-description {
   color: #333; /* Colore del testo della descrizione */
+  height: 49px;
 }
 
 .truncate {
@@ -39,4 +40,11 @@
 
 .icon-container i {
   margin-left: 10px; /* Puoi regolare il valore per più o meno spazio */
+}
+
+.note-update {
+  color: #5d5d5d; /* Colore del testo della descrizione */
+  display: flex;
+  justify-content: end;
+  opacity: 80%;
 }

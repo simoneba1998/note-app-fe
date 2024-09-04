@@ -1,10 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
-import { Note } from '../../models/note.interface';
-import { ModalComponent } from '../modal.component';
-import { ModalService } from '../../services/modal.service';
-import { Modal } from '../../models/modal.interface';
 import { ModalType } from '../../constants';
+import { Modal } from '../../models/modal.interface';
+import { Note } from '../../models/note.interface';
+import { ModalService } from '../../services/modal.service';
+import { ModalComponent } from '../modal.component';
 
 @Component({
   selector: 'app-note-list',
@@ -25,6 +25,7 @@ import { ModalType } from '../../constants';
           </div>
         </div>
         <div class="note-description truncate">{{ note.description }}</div>
+        <div class="note-update" *ngIf="note.updateDate">Last Update: {{formatISODateToDDMMYYYY(note.updateDate)}}</div>
       </div>
     </div>
 
@@ -53,5 +54,18 @@ export class AppNoteListComponent {
       value: idNote,
     };
     this.modalService.openModal(this.modalData.type);
+  }
+
+  formatISODateToDDMMYYYY(isoDateString: string): string {
+    // Crea un oggetto Date da una stringa ISO 8601
+    const date = new Date(isoDateString);
+
+    // Ottieni il giorno, mese e anno dalla data
+    const day = String(date.getUTCDate()).padStart(2, '0');
+    const month = String(date.getUTCMonth() + 1).padStart(2, '0'); // I mesi sono indicizzati da 0
+    const year = date.getUTCFullYear();
+
+    // Restituisci la data formattata
+    return `${day}/${month}/${year}`;
   }
 }

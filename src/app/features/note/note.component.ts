@@ -38,7 +38,7 @@ import { DigitalClockComponent } from '../../components/digital-clock.component'
               aria-label="search"
               [formControl]="searchControl"
             />
-            <span class="input-group-text custom-input" *ngIf="searchControl.value">
+            <span class="input-group-text custom-input pointer" *ngIf="searchControl.value">
               <i class="bi bi-x-circle" (click)="cleanSearch()"></i>
             </span>
             <span class="input-group-text custom-input" *ngIf="!searchControl.value">

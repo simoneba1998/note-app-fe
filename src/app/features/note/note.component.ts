@@ -10,6 +10,7 @@ import { ModalService } from '../../services/modal.service';
 import { NoteService } from '../../services/note.service';
 import { SearchButtonComponent } from '../../components/search-button.component';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { DigitalClockComponent } from '../../components/digital-clock.component';
 
 @Component({
   selector: 'app-note',
@@ -21,6 +22,7 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
     ModalComponent,
     SearchButtonComponent,
     ReactiveFormsModule,
+    DigitalClockComponent
   ],
   template: `
     <div class="app-header">
@@ -36,12 +38,16 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
               aria-label="search"
               [formControl]="searchControl"
             />
-            <span class="input-group-text" *ngIf="searchControl.value">
+            <span class="input-group-text custom-input" *ngIf="searchControl.value">
               <i class="bi bi-x-circle" (click)="cleanSearch()"></i>
+            </span>
+            <span class="input-group-text custom-input" *ngIf="!searchControl.value">
+              <i class="bi bi-search"></i>
             </span>
           </div>
         </div>
       </div>
+      <app-digital-clock></app-digital-clock>
       <h1 class="title">MemoWiz</h1>
     </div>
     <div class="app-container">
@@ -71,9 +77,9 @@ export class NoteComponent implements OnInit {
     this.noteService.refreshNotes();
 
     this.searchControl.valueChanges.subscribe((value) => {
-      if (value) {
+
         this.noteService.refreshNotes(value as string);
-      }
+
     });
   }
 
@@ -91,6 +97,5 @@ export class NoteComponent implements OnInit {
 
   cleanSearch(){
     this.searchControl.reset();
-    this.noteService.refreshNotes();
   }
 }

@@ -8,14 +8,40 @@ import { Modal } from '../../models/modal.interface';
 import { Note } from '../../models/note.interface';
 import { ModalService } from '../../services/modal.service';
 import { NoteService } from '../../services/note.service';
+import { SearchButtonComponent } from '../../components/search-button.component';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-note',
   standalone: true,
-  imports: [CommonModule, AddButtonComponent, AppNoteListComponent, ModalComponent],
+  imports: [
+    CommonModule,
+    AddButtonComponent,
+    AppNoteListComponent,
+    ModalComponent,
+    SearchButtonComponent,
+    ReactiveFormsModule,
+  ],
   template: `
     <div class="app-header">
-      <app-add-button (click)="openModalAddNote()"></app-add-button>
+      <div class="button-container">
+        <app-add-button (click)="openModalAddNote()"></app-add-button>
+        <!-- <app-search-button (click)="toggleInput()"></app-search-button> -->
+        <div class="input-container" [ngClass]="{ 'slide-out': !showInput }">
+          <div class="input-group">
+            <input
+              type="text"
+              class="form-control custom-input"
+              placeholder="Search Memo By Code"
+              aria-label="search"
+              [formControl]="searchControl"
+            />
+            <span class="input-group-text" *ngIf="searchControl.value">
+              <i class="bi bi-x-circle" (click)="cleanSearch()"></i>
+            </span>
+          </div>
+        </div>
+      </div>
       <h1 class="title">MemoWiz</h1>
     </div>
     <div class="app-container">
@@ -27,20 +53,44 @@ import { NoteService } from '../../services/note.service';
 })
 export class NoteComponent implements OnInit {
   noteList?: Note[];
-  modalData:Modal={
-    type:ModalType.ADD_NOTE,
-    value:{}
-  }
+  showInput = false;
+  modalData: Modal = {
+    type: ModalType.ADD_NOTE,
+    value: {},
+  };
+  searchControl = new FormControl('');
 
-  constructor(private noteService: NoteService, private modalService:ModalService) {
+  constructor(
+    private noteService: NoteService,
+    private modalService: ModalService
+  ) {
     this.noteService.notes$.subscribe((res) => (this.noteList = res));
   }
 
   ngOnInit(): void {
     this.noteService.refreshNotes();
+
+    this.searchControl.valueChanges.subscribe((value) => {
+      if (value) {
+        this.noteService.refreshNotes(value as string);
+      }
+    });
   }
 
   openModalAddNote() {
     this.modalService.openModal(this.modalData.type);
+  }
+
+  // toggleInput() {
+  //   this.searchControl.reset();
+  //   if (this.showInput) {
+  //     this.noteService.refreshNotes();
+  //   }
+  //   this.showInput = !this.showInput;
+  // }
+
+  cleanSearch(){
+    this.searchControl.reset();
+    this.noteService.refreshNotes();
   }
 }

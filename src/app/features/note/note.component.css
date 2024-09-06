@@ -11,7 +11,7 @@
   padding: 10px; /* Spazio interno */
   height: 100%;
   min-height: calc(100vh - 60px); /* Altezza che tiene conto dell'intestazione */
-  background-image: url('../../assets/images/back-7.jpg');
+  background-image: url('../../assets/images/back-2.jpg');
   background-size: cover;
   background-position: center;
 
@@ -23,3 +23,35 @@
   font-size: 24px; /* Dimensione del font per il titolo */
   font-weight: 600; /* Peso del font per enfatizzare il titolo */
 }
+
+.button-container {
+  display: flex;
+  gap: 10px; /* Spaziatura orizzontale tra i bottoni */
+  justify-content: flex-start; /* Allinea i bottoni a sinistra */
+}
+
+.custom-input {
+  color: #24628b; /* Colore del testo (rosso) */
+  background-color: #d4eaff; /* Colore dello sfondo (grigio chiaro) */
+  border: 1px solid #24628b; /* Bordo con colore blu */
+}
+
+.custom-input::placeholder {
+  color: #888888; /* Cambia colore del placeholder */
+}
+
+.input-container {
+  animation: slideInFromLeft 0.5s ease-in-out;
+}
+
+@keyframes slideInFromLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-10%); /* L'elemento parte fuori dal lato sinistro */
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0); /* L'elemento ritorna nella sua posizione normale */
+  }
+}
+
